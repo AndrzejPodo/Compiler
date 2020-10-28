@@ -41,9 +41,10 @@ t_ignore_COMMENT = r'\#.*' # rule for discarding comments
 
 t_ignore = ' \t\n' # we want to ingore tabs, new lines and spaces
 
-t_INTNUM = r'\d+' # integer number is just digit one or more times ex. 1, 00012 
+# TODO: rozszerzyc o notacje z e
+t_FLOAT = r'(\d+\.\d*)|(\.\d+)' # float number is digit one or more times, dot and digit one ore more time ex. 000231.23 
 
-t_FLOAT = r'(\d+\.\d*)|(\.\d+)' # float number is digit one or more times, dot and digit one ore more time ex. 000231.23
+t_INTNUM = r'\d+' # integer number is just digit one or more times ex. 1, 00012 
 
 t_STRING = r'"([^"\\]|(\\")|(\\))*"' # strings in form "charcacters" it is possible to escape " in string like "its a \"cat\""
 # first character as undersore or letter, rest of characters as letters underscores or digits
