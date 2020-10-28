@@ -42,7 +42,7 @@ t_ignore_COMMENT = r'\#.*' # rule for discarding comments
 t_ignore = ' \t\n' # we want to ingore tabs, new lines and spaces
 
 # TODO: rozszerzyc o notacje z e
-t_FLOAT = r'(\d+\.\d*)|(\.\d+)' # float number is digit one or more times, dot and digit one ore more time ex. 000231.23 
+t_FLOAT = r'((\d+\.\d*)|(\.\d+))(E-?\d+)?' # float number is digit one or more times, dot and digit one ore more time ex. 000231.23 
 
 t_INTNUM = r'\d+' # integer number is just digit one or more times ex. 1, 00012 
 
