@@ -2,7 +2,6 @@ import scanner
 import ply.yacc as yacc
 import lexer as scanner
 
-
 tokens = scanner.tokens
 
 precedence = (
@@ -17,13 +16,11 @@ precedence = (
    ("right", 'UMINUS')
 )
 
-
 def p_error(p):
     if p:
         print("Syntax error at line {0}: LexToken({1}, '{2}')".format(p.lineno, p.type, p.value))
     else:
         print("Unexpected end of input")
-
 
 def p_program(p):
     """program : instructions_opt"""

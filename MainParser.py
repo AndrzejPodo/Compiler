@@ -1,6 +1,6 @@
 import sys
 import lexer
-import Mparser
+import parser
 
 if __name__ == '__main__':
 
@@ -11,6 +11,6 @@ if __name__ == '__main__':
         print("Cannot open {0} file".format(filename))
         sys.exit(0)
 
-    parser = Mparser.parser
+    parser = parser.parser
     text = file.read()
     parser.parse(text, lexer=lexer.lexer)
