@@ -1,6 +1,7 @@
 import sys
 import ply.lex as lex
 import lexer
+import parser
 
 if __name__ == '__main__':
     try:
@@ -10,12 +11,6 @@ if __name__ == '__main__':
         print(f'Cannot open { filename } file')
         sys.exit(0)
 
+    parser = parser.parser
     text = file.read()
-    lexer = lexer.lexer
-    lexer.input(text)
-
-    while True:
-        tok = lexer.token()
-        if not tok:
-            break
-        print(f'{tok.lineno}:{tok.type}({tok.value})')
+    parser.parse(text, lexer=lexer.lexer)
