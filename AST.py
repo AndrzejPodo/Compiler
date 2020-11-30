@@ -13,19 +13,17 @@ class Instructions(Node):
         self.instructions.append(instruction)
 
 class Ints(Node):
-    def __init__(self, value):
-        self.values = [value]
-
-    def add(self, value):
-        self.values.append(value)
+    def __init__(self, element, ints = None):
+        self.ints = ints
+        self.element = element
 
 class Array(Node):
-    def __init__(self, sequence=None):
+    def __init__(self, sequence=[]):
         self.sequence = sequence
 
 class Num(Node):
     def __init__(self, value):
-        self.value = value
+        self.value = float(value)
 
 class Variable(Node):
     def __init__(self, name):
@@ -68,7 +66,7 @@ class Assign(Node):
     def __init__(self, op, variable, expression):
         self.op = op
         self.variable = variable
-        self.xpression = expression
+        self.expression = expression
 
 class ArrayAssign(Node):
     def __init__(self, op, variable, array_indexes, expression):
@@ -78,11 +76,9 @@ class ArrayAssign(Node):
         self.expression = expression
 
 class Sequence(Node):
-    def __init__(self, sequence):
-        self.sequence = [sequence]
-    
-    def add(self, sequence):
-        self.sequence.append(sequence)
+    def __init__(self, element, sequence = None):
+        self.sequence = sequence
+        self.element = element
 
 class Print(Node):
     def __init__(self, arguments):

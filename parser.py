@@ -69,8 +69,7 @@ def p_int_seq(p):
     if(len(p) == 2):
         p[0] = AST.Ints(1)
     else:
-        p[0] = p[3]
-        p[0].add(p[1])
+        p[0] = AST.Ints(p[1], p[3])
 
 # array is empty or contains any sequence (this is how it work in python)
 def p_array(p):
@@ -163,8 +162,7 @@ def p_sequence(p):
     if(len(p) == 2):
         p[0] = AST.Sequence(p[1])
     else:
-        p[0] = p[3]
-        p[0].add(p[1])
+        p[0] = AST.Sequence(p[1], p[3])
 
 def p_print(p):
     """ print : PRINT sequence ';' """
