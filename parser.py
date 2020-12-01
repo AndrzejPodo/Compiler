@@ -67,9 +67,9 @@ def p_int_seq(p):
     """ ints : INTNUM
              | INTNUM ',' ints"""
     if(len(p) == 2):
-        p[0] = AST.Ints(1)
+        p[0] = AST.Ints(AST.Num(p[1]))
     else:
-        p[0] = AST.Ints(p[1], p[3])
+        p[0] = AST.Ints(AST.Num(p[1]), p[3])
 
 # array is empty or contains any sequence (this is how it work in python)
 def p_array(p):
@@ -82,8 +82,8 @@ def p_array(p):
 
 # array can have more than two dimensions so [int] and [int,int] wont be enough
 def p_array_val(p):
-    """ array_val : '[' ints ']' """
-    p[0] = AST.ArrayValues(p[2])
+    """ array_val : ID '[' ints ']' """
+    p[0] = AST.ArrayValues(p[3])
 
 def p_expression(p):
     """ expression : num
@@ -149,12 +149,12 @@ def p_assign(p):
     p[0] = AST.Assign(p[2], AST.Variable(p[1]), p[3])
 
 def p_assign_array(p):
-    """ assign_array : ID array_val '=' expression ';'
-                     | ID array_val ADDASSIGN expression ';'
-                     | ID array_val SUBASSIGN expression ';'
-                     | ID array_val MULASSIGN expression ';'
-                     | ID array_val DIVASSIGN expression ';' """
-    p[0] = AST.ArrayAssign(p[3], AST.Variable(p[1]), p[2], p[4])
+    """ assign_array : array_val '=' expression ';'
+                     | array_val ADDASSIGN expression ';'
+                     | array_val SUBASSIGN expression ';'
+                     | array_val MULASSIGN expression ';'
+                     | array_val DIVASSIGN expression ';' """
+    p[0] = AST.ArrayAssign(p[1], p[2], p[3])
 
 def p_sequence(p):
     """ sequence : expression

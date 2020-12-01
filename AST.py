@@ -57,10 +57,10 @@ class Block(Node):
         self.instructions = instructions
 
 class If(Node):
-    def __init__(self, condition, instruction, else_instuction=None):
+    def __init__(self, condition, instruction, else_instruction=None):
         self.condition = condition
         self.instruction = instruction
-        self.else_instuction = else_instuction
+        self.else_instruction = else_instruction
 
 class Assign(Node):
     def __init__(self, op, variable, expression):
@@ -69,10 +69,9 @@ class Assign(Node):
         self.expression = expression
 
 class ArrayAssign(Node):
-    def __init__(self, op, variable, array_indexes, expression):
+    def __init__(self, array_values, op, expression):
         self.op = op
-        self.variable = variable
-        self.array_indexes = array_indexes
+        self.array_values = array_values
         self.expression = expression
 
 class Sequence(Node):
